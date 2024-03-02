@@ -6,7 +6,7 @@
 #    By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 18:05:35 by barjimen          #+#    #+#              #
-#    Updated: 2024/02/10 22:41:32 by barjimen         ###   ########.fr        #
+#    Updated: 2024/03/02 17:20:43 by barjimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,9 +42,8 @@
 #--- .C
 	
 	SRC_FILES_C	:=		cliente  \
+						c_msg	 \
 						
-
-
 	SRC_FILES_S	:=		servidor \
 
 #--- Variables de los archivos

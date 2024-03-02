@@ -6,11 +6,13 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:43:10 by barjimen          #+#    #+#             */
-/*   Updated: 2024/02/27 00:10:11 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/03/02 16:31:51 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minitalk.h"
+
+
 static void signal_handler(int signo, siginfo_t *info, void *n)
 {
 	static char chr;
