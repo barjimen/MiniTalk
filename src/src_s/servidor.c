@@ -6,22 +6,43 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:43:10 by barjimen          #+#    #+#             */
-/*   Updated: 2024/03/03 17:13:21 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/03/19 20:26:27 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minitalk.h"
-
-static void signal_handler(int signo, siginfo_t *info, void *n)
+int	write_chr(int pid, char chr)
 {
-	static char chr;
-	static int count;
-	static pid_t pid_c;
+	static char palabra[10000];
+	static int	i;
 	
-	if(pid_c == 0)
+	if (chr == '\0')
+	{
+		ft_putstr_fd(palabra, 1);
+		kill(pid, SIGUSR1);
+		pid = 0;
+		i = 0;
+		ft_bzero(palabra, ft_strlen(palabra));
+	}
+	else
+	{
+		palabra[i] = chr;
+		i++;
+		palabra[i] = '\0';
+	}
+	return (pid);
+}
+
+static void	signal_handler(int signo, siginfo_t *info, void *n)
+{
+	static char		chr;
+	static int		count;
+	static pid_t	pid_c;
+
+	if (pid_c == 0)
 		pid_c = info->si_pid;
 	(void)n;
-	if(pid_c != info->si_pid)
+	if (pid_c != info->si_pid)
 	{
 		kill(info->si_pid, SIGUSR2);
 		return ;
@@ -31,23 +52,18 @@ static void signal_handler(int signo, siginfo_t *info, void *n)
 	count++;
 	if (count == 8)
 	{
-		write(1, &chr, 1);
+		pid_c = write_chr(pid_c, chr);
 		count = 0;
 		chr = 0;
-		if (chr == '\0')
-		{
-			kill(info->si_pid, SIGUSR1);
-			pid_c = 0;
-		}
 	}
 }
+
 int	main(void)
 {
-	struct sigaction serv;
-	
-	char *numb;
-	pid_t pid;
-	
+	struct sigaction	serv;
+	char				*numb;
+	pid_t				pid;
+
 	serv.sa_flags = SA_SIGINFO;
 	serv.sa_sigaction = signal_handler;
 	pid = getpid();
@@ -56,7 +72,6 @@ int	main(void)
 	ft_putendl_fd(numb, 1);
 	sigaction(SIGUSR1, &serv, NULL);
 	sigaction(SIGUSR2, &serv, NULL);
-
 	while (1)
 		;
 	return (0);
