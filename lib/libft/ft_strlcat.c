@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: barjimen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 12:35:22 by barjimen          #+#    #+#             */
-/*   Updated: 2022/10/01 18:38:51 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:59:46 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dtsize)
 	dst[y] = '\0';
 	return (ldes + lsou);
 }
-
-/*int	main(void)
-{
-	char dest[15] = "rrrrrr\0\0\0\0\0\0\0\0\0";
-
-	dest[11] = 'a';
-	ft_strlcat(dest, "lorem", 15);
-	write(1, "\n", 1);
-	write(1, dest, 15);
-	return (0);
-}*/

@@ -6,7 +6,7 @@
 #    By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 18:05:35 by barjimen          #+#    #+#              #
-#    Updated: 2024/03/02 17:20:43 by barjimen         ###   ########.fr        #
+#    Updated: 2024/03/20 20:26:37 by barjimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@
 						c_msg	 \
 						
 	SRC_FILES_S	:=		servidor \
+						s_msg	 \
 
 #--- Variables de los archivos
 

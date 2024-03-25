@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 19:09:39 by barjimen          #+#    #+#             */
-/*   Updated: 2022/12/28 17:51:13 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:01:21 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,3 @@ char	*ft_itoa(int n)
 	}
 	return (m);
 }
-/*#include <limits.h>
-int main(void)
-{
-	printf("%s\n", ft_itoa(INT_MAX));
-	return (1);
-}*/

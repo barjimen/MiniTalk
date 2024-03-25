@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:43:07 by barjimen          #+#    #+#             */
-/*   Updated: 2024/03/19 20:17:08 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/03/26 00:04:06 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int	argument_handler(int argc, char **argv)
 {
 	int	pid;
 
-	pid = ft_atoi(argv[1]);
-	if (!argv[1])
+	if (argc == 1)
 		close_c(MSG_ARG_0);
 	if (argc != 3)
 		close_c(MSG_ARG_3);
+	pid = ft_atoi(argv[1]);
 	if (pid == 0)
 		close_c(MSG_PID_0);
 	return (pid);

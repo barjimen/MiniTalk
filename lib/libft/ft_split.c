@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: barjimen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 20:28:00 by barjimen          #+#    #+#             */
-/*   Updated: 2022/11/19 20:25:54 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/03/05 20:01:47 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,18 +93,3 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	return (ft_end(s, c, cont, strs));
 }
-
-/*int main()
-{
-	printf("EMPIEZA LA FUNCION\n");
-	char *frase = "Hola que tal";
-	char **split = ft_split(frase, ' ');
-
-	printf("La palabra 1 es: %s\n", split[0]);
-	printf("La palabra 1 es: %s\n", split[1]);
-	printf("La palabra 1 es: %s\n", split[2]);
-
-
-	printf("TERMINA LA FUNCION\n");
-	return(0);
-}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: barjimen <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 20:11:13 by barjimen          #+#    #+#             */
-/*   Updated: 2022/09/30 15:50:44 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/03/06 20:22:23 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	if (b == '\0' && a == '\0')
 		return (NULL);
 	if (dst > src)
-	{	
+	{
 		while (len--)
 			a[len] = b[len];
 	}
 	else
-	{	
+	{
 		while (i < len && a != b)
 		{
 			a[i] = b[i];

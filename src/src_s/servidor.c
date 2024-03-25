@@ -6,11 +6,17 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:43:10 by barjimen          #+#    #+#             */
-/*   Updated: 2024/03/19 20:26:27 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/03/20 20:36:27 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minitalk.h"
+
+static int	close_s(char *msg)
+{
+	ft_putendl_fd(msg, 2);
+	exit(EXIT_SUCCESS);
+}
 int	write_chr(int pid, char chr)
 {
 	static char palabra[10000];
@@ -39,6 +45,8 @@ static void	signal_handler(int signo, siginfo_t *info, void *n)
 	static int		count;
 	static pid_t	pid_c;
 
+	if (signo == SIGINT)
+		close_s(MSG_BYE);
 	if (pid_c == 0)
 		pid_c = info->si_pid;
 	(void)n;
@@ -68,10 +76,11 @@ int	main(void)
 	serv.sa_sigaction = signal_handler;
 	pid = getpid();
 	numb = ft_itoa(pid);
-	ft_putstr_fd("El pid es: ", 1);
-	ft_putendl_fd(numb, 1);
 	sigaction(SIGUSR1, &serv, NULL);
 	sigaction(SIGUSR2, &serv, NULL);
+	sigaction(SIGINT, &serv, NULL);
+	s_msg(0, NULL);
+	s_msg(1, numb);
 	while (1)
 		;
 	return (0);
