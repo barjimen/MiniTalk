@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:43:10 by barjimen          #+#    #+#             */
-/*   Updated: 2024/03/20 20:36:27 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/03/26 01:14:25 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	write_chr(int pid, char chr)
 	
 	if (chr == '\0')
 	{
+		printf("señales imprimidas: %d\n", i);
 		ft_putstr_fd(palabra, 1);
 		kill(pid, SIGUSR1);
 		pid = 0;
@@ -55,15 +56,15 @@ static void	signal_handler(int signo, siginfo_t *info, void *n)
 		kill(info->si_pid, SIGUSR2);
 		return ;
 	}
-	if (signo == SIGUSR1)
-		chr = chr | 128 >> count;
-	count++;
-	if (count == 8)
-	{
-		pid_c = write_chr(pid_c, chr);
-		count = 0;
-		chr = 0;
-	}
+		if (signo == SIGUSR1)
+			chr = chr | 128 >> count;
+		count++;
+		if (count == 8)
+		{
+			pid_c = write_chr(pid_c, chr);
+			count = 0;
+			chr = 0;
+		}
 }
 
 int	main(void)

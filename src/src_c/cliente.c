@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:43:07 by barjimen          #+#    #+#             */
-/*   Updated: 2024/03/26 00:04:06 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/03/26 01:48:45 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void	signal_handler(int signo, siginfo_t *info, void *n)
 	(void)info;
 	(void)n;
 	if (signo == SIGUSR1)
-		c_msg(0, NULL);
+		c_msg(0, NULL); 
 	else if (signo == SIGUSR2)
-		c_msg(1, NULL);
+		close_c(MSG_KO);
 }
 
 void	manda_char(int pid, char ch)
@@ -60,7 +60,7 @@ void	manda_char(int pid, char ch)
 				close_c(MSG_PID_KO);
 		}
 		i--;
-		usleep(300);
+		usleep(400);
 	}
 }
 
@@ -86,5 +86,6 @@ int	main(int argc, char **argv)
 	}
 	manda_char(pid, '\n');
 	manda_char(pid, '\0');
+	printf("total de señales: %d\n", count);
 	return (0);
 }
