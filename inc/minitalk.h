@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:11:22 by barjimen          #+#    #+#             */
-/*   Updated: 2024/03/20 20:23:58 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/04/11 17:58:17 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 
 int	c_msg(int numb, char *pid);
 int	s_msg(int numb, char *pid);
-
 
 //------ MSG for function ------
 # define MSG_OK "Recibido, todo ok."

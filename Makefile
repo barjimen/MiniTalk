@@ -6,17 +6,17 @@
 #    By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 18:05:35 by barjimen          #+#    #+#              #
-#    Updated: 2024/03/20 20:26:37 by barjimen         ###   ########.fr        #
+#    Updated: 2024/04/11 20:01:50 by barjimen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-#---------------------------------- Primera parte ----------------------------------
- #---Ejecutables
+#---------------------------------- First Part ----------------------------------
+ #--- Executables
  
 	NAME_C	:= client
 	NAME_S	:= server
 
-#---Carpetas
+#--- Folders
 
 	SRC_DIR		:=		src/
 	SRC_DIR_C	:=		src/src_c/
@@ -27,15 +27,14 @@
 	LIB_DIR		:=		lib/
 	INC_DIR		:=		inc/
 	LFT_DIR		:=		$(LIB_DIR)libft/
-#---Estos anteriores serían para uno
 	
-#---Compilador
+#--- Compile
 
 	cc			:=		gcc
 	CFLAGS		:=		-g -Wall -Wextra -Werror
 	HEADER		:=		-I$(INC_DIR) -I$(LFT_DIR)
 
-#--- .a de la LIBFT
+#--- .a LIBFT
 
 	LIBFT		:=		$(LFT_DIR)libft.a
 
@@ -47,7 +46,7 @@
 	SRC_FILES_S	:=		servidor \
 						s_msg	 \
 
-#--- Variables de los archivos
+#--- File variables
 
 	SRC_C		=		$(addprefix $(SRC_DIR_C), $(addsuffix .c, $(SRC_FILES_C)))
 	OBJ_C		=		$(addprefix $(OBJ_DIR_C), $(addsuffix .o, $(SRC_FILES_C)))
@@ -57,16 +56,16 @@
 	DEPS_S		=		$(addprefix $(OBJ_DIR_S), $(addsuffix .d, $(SRC_FILES_S)))
 	INCS		=		$(addprefix $(INCLUDE), $(addsuffix .h, $(INC_FILES)))
 	
-#--- Comandos
+#--- Commands
 
 RM				=		rm -f
 
-#--- Caché
+#--- Cache
 
 OBJF_C			=		.cache_exists_c
 OBJF_S			=		.cache_exists_s
 
-#---------------------------------- Segunda parte ----------------------------------
+#---------------------------------- Second Part ----------------------------------
 all:	makelibs
 			@$(MAKE) $(NAME_C)
 			@$(MAKE) $(NAME_S)
@@ -103,7 +102,7 @@ clean:
 			@$(RM) -rf $(OBJ_DIR)
 
 fclean:		clean
-			@$(RM) -f $(NAME)
+			@$(RM) -f $(NAME_C) $(NAME_S) 
 			@make fclean -sC $(LFT_DIR)
 
 re:			fclean

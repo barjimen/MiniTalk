@@ -6,7 +6,7 @@
 /*   By: barjimen <barjimen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 20:43:10 by barjimen          #+#    #+#             */
-/*   Updated: 2024/03/26 01:14:25 by barjimen         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:08:44 by barjimen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,25 @@ static int	close_s(char *msg)
 	ft_putendl_fd(msg, 2);
 	exit(EXIT_SUCCESS);
 }
+
 int	write_chr(int pid, char chr)
 {
-	static char palabra[10000];
+	static char	word[10000];
 	static int	i;
-	
+
 	if (chr == '\0')
 	{
-		printf("señales imprimidas: %d\n", i);
-		ft_putstr_fd(palabra, 1);
+		ft_putstr_fd(word, 1);
 		kill(pid, SIGUSR1);
 		pid = 0;
 		i = 0;
-		ft_bzero(palabra, ft_strlen(palabra));
+		ft_bzero(word, ft_strlen(word));
 	}
 	else
 	{
-		palabra[i] = chr;
+		word[i] = chr;
 		i++;
-		palabra[i] = '\0';
+		word[i] = '\0';
 	}
 	return (pid);
 }
@@ -56,15 +56,15 @@ static void	signal_handler(int signo, siginfo_t *info, void *n)
 		kill(info->si_pid, SIGUSR2);
 		return ;
 	}
-		if (signo == SIGUSR1)
-			chr = chr | 128 >> count;
-		count++;
-		if (count == 8)
-		{
-			pid_c = write_chr(pid_c, chr);
-			count = 0;
-			chr = 0;
-		}
+	if (signo == SIGUSR1)
+		chr = chr | 128 >> count;
+	count++;
+	if (count == 8)
+	{
+		pid_c = write_chr(pid_c, chr);
+		count = 0;
+		chr = 0;
+	}
 }
 
 int	main(void)
